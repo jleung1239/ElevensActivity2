@@ -42,6 +42,13 @@ public class Deck {
      * @return true if this deck is empty, false otherwise.
      */
     public boolean isEmpty() {
+        if (cards.size() == 0){
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
     }
 
@@ -50,6 +57,7 @@ public class Deck {
      * @return the number of undealt cards in this deck.
      */
     public int size() {
+        return cards.size();
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
     }
 
@@ -58,6 +66,15 @@ public class Deck {
      * and reset the size to represent the entire deck.
      */
     public void shuffle() {
+        //goes through the whole list of cards, swapping them into different indexes
+        int n;
+        List<Card> temp = new ArrayList<>();
+        for (int i = 0; i < cards.size(); i++){
+            n = (int)(Math.random() * cards.size() + 1);
+            temp.add(cards.get(i));
+            cards.remove(i);
+            cards.add(n,temp.get(0));
+        }
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
     }
 
@@ -67,6 +84,13 @@ public class Deck {
      *         previously dealt.
      */
     public Card deal() {
+        //removes the card at the very end of the deck and adds it to the discard pile
+        //returns the card
+        //index of last is list.size() -1
+        List<Card> discard = new ArrayList<>();
+        discard.add(cards.get(cards.size()-1));
+        cards.remove(cards.size()-1);
+        return discard.get(discard.size()-1);
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
     }
 
