@@ -58,6 +58,10 @@ public class Shuffler {
             shuffled[k] = values[j];
             k = k+2;
         }
+        //copies shuffled onto values
+        for (int i = 0 ; i < values.length ; i++){
+            values[i] = shuffled[i];
+        }
         /* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
     }
 
@@ -75,11 +79,21 @@ public class Shuffler {
     public static void selectionShuffle(int[] values) {
         int shuffled[] = new int[values.length];
         int j;
-        for (int k = 0 ; k < values.length -1 ; k++){
+        for (int k = 0 ; k < values.length ; k++){
             j = (int)(Math.random()*values.length);
-            shuffled[k] = values[j];
+            while (values[j] == 60){
+                j = (int)(Math.random()*values.length);
+            }
+            if (values[j] != 60){
+                shuffled[k] = values[j];
+                values[j] = 60;
+            }
         }
-        values = null;
+
+        //copies shuffled onto values
+        for (int i = 0 ; i < values.length ; i++){
+            values[i] = shuffled[i];
+        }
         /* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
     }
 }
